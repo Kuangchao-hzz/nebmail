@@ -41,8 +41,10 @@
                     <a class="nav-link active" id="domains-tab-nav" data-toggle="tab" href="#domains-tab" role="tab"
                        aria-controls="domains"
                        aria-selected="true">
-                        <span class="iconfont icon-shenqinggexingyuming"></span>
-                        注册域名</a>
+                       <div>
+                           <span class="iconfont icon-shenqinggexingyuming" style="position: relative;top: 1px"></span>
+                           注册邮箱</div>
+                    </a>
                 </li>
                 <!--<li class="nav-item">-->
                 <!--<a class="nav-link" id="view-domain-tab-nav" data-toggle="tab" href="#view-domain-tab" role="tab" aria-controls="view-domain"-->
@@ -54,14 +56,18 @@
                 <!--</li>-->
                 <li class="nav-item">
                     <a class="nav-link" id="sendmail-tab-nav" data-toggle="tab" href="#sendmail-tab" role="tab"
-                       aria-controls="sendmail" aria-selected="false"><span class="iconfont icon-youxiang"></span>发送邮件</a>
+                       aria-controls="sendmail" aria-selected="false">
+                        <div><span class="iconfont icon-youxiang" style="position: relative;top: 1px"></span>&nbsp;发送邮件</div>
+                    </a>
                 </li>
                 <!--<li class="nav-item">-->
                 <!--<a class="nav-link" id="mailbox-tab-nav" data-toggle="tab" href="#mailbox-tab" role="tab" aria-controls="mailbox" aria-selected="false">查收邮件</a>-->
                 <!--</li>-->
                 <li class="nav-item">
                     <a class="nav-link" id="money-tab-nav" data-toggle="tab" href="#money-tab" role="tab"
-                       aria-controls="mailbox" aria-selected="false"><span class="iconfont icon-wode"></span>我的</a>
+                       aria-controls="mailbox" aria-selected="false">
+                        <div><span class="iconfont icon-wode" style="position: relative;top: 1px"></span>&nbsp;我的</div>
+                    </a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -70,11 +76,11 @@
                     <div class="add_banner" style="padding-top: 150px">
                         <h4 style="margin: 0 auto;font-weight: 600;
 					width: 100%;
-					padding: 20px 0">在星云链上注册域名服务</h4>
+					padding: 20px 0">在星云链上注册邮箱服务</h4>
                         <div>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="域名(只能包含字母或数字并且以字母开头)"
-                                       id="register_domain_input" aria-label="域名(只能包含字母或数字并且以字母开头)"
+                                <input type="text" class="form-control" placeholder="邮箱(只能包含字母或数字并且以字母开头)"
+                                       id="register_domain_input" aria-label="邮箱(只能包含字母或数字并且以字母开头)"
                                        aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="basic-addon2">.nas</span>
@@ -90,11 +96,11 @@
 
                 <div class="tab-pane fade" id="view-domain-tab" role="tabpanel" aria-labelledby="view-domain-tab-nav">
                     <div class="add_banner">
-                        <h4 style="margin: 0 auto;width: 100%;padding: 20px 0">在星云链上查看域名信息</h4>
+                        <h4 style="margin: 0 auto;width: 100%;padding: 20px 0">在星云链上查看邮箱信息</h4>
                         <div>
                             <div class="input-group mb-3" style="width: 50%;">
-                                <input type="text" class="form-control" placeholder="域名(只能包含字母或数字并且以字母开头)"
-                                       id="query_domain_input" aria-label="域名(只能包含字母或数字并且以字母开头)"
+                                <input type="text" class="form-control" placeholder="邮箱(只能包含字母或数字并且以字母开头)"
+                                       id="query_domain_input" aria-label="邮箱(只能包含字母或数字并且以字母开头)"
                                        aria-describedby="basic-addon3" style="background: white;">
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="basic-addon3">.nas</span>
@@ -103,36 +109,17 @@
                             <button id="query_domain_btn" type="button" class="btn btn-danger">查询</button>
                         </div>
                         <div class="hide" id="query_domain_info_result_panel" style="color: red; padding: 10px">
-                            <span>域名拥有者：</span>
+                            <span>邮箱拥有者：</span>
                             <span class="-domain-owner-span"></span>
                             <br>
-                            <span>域名关联数据:</span>
+                            <span>邮箱关联数据:</span>
                             <br>
                             <div class="-domain-content-panel"></div>
                             <br>
-                            <span>域名: </span>
+                            <span>邮箱: </span>
                             <span class="-domain-host-span"></span>
                             <span>.nas</span>
                             <br>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-pane fade" id="view-address-domains-tab" role="tabpanel"
-                     aria-labelledby="view-address-domains-tab-nav">
-                    <div class="add_banner">
-                        <div class="add_banner">
-                            <h4 style="margin: 0 auto;
-										width: 100%;
-										padding: 20px 0">在星云链上查看地址拥有的域名</h4>
-                            <div>
-                                <input type="text" class="form-control" id="query_user_domains_input"
-                                       style="width: 50%; background: white;" placeholder="输入用户地址">
-                                <button id="query_user_domains_btn" type="button" class="btn btn-danger">查询</button>
-                            </div>
-                            <div class="hide" id="query_user_domains_result_panel" style="color: red; padding: 10px">
-
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -141,11 +128,11 @@
                     <div class="add_banner">
                         <h4 style="margin: 0 auto;width: 100%;padding: 20px 0">发送邮件</h4>
                         <div>
-                            <span style="font-size: 14px">发件人地址(你自己的星云域名，比如 abc.nas)</span>
+                            <span style="font-size: 14px">发件人地址(你自己的星云邮箱，比如 abc.nas)</span>
                             <br>
                             <input type="text" id="send_mail_from_domain_input" style="width: 100%;">
                             <br>
-                            <span>收件人地址(星云域名，比如 zoowii.nas)</span>
+                            <span>收件人地址(星云邮箱，比如 zoowii.nas)</span>
                             <br>
                             <input type="text" id="send_mail_to_domain_input" style="width: 100%;">
                             <br>
@@ -167,11 +154,11 @@
                     <div class="add_banner">
                         <h4 style="margin: 0 auto;
 							width: 100%;
-							padding: 20px 0">在星云链上查看域名收到的邮件(在本页头部打开钱包后才可以解密邮件内容)</h4>
+							padding: 20px 0">在星云链上查看邮箱收到的邮件(在本页头部打开钱包后才可以解密邮件内容)</h4>
                         <div>
                             <div class="input-group mb-3" style="width: 50%;">
-                                <input type="text" class="form-control" placeholder="域名(只能包含字母或数字并且以字母开头)"
-                                       id="query_domain_mails_input" aria-label="域名(只能包含字母或数字并且以字母开头)"
+                                <input type="text" class="form-control" placeholder="邮箱(只能包含字母或数字并且以字母开头)"
+                                       id="query_domain_mails_input" aria-label="邮箱(只能包含字母或数字并且以字母开头)"
                                        aria-describedby="basic-addon3" style="background: white;">
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="basic-addon3">.nas</span>
@@ -254,6 +241,35 @@
                                       placeholder="在此处贴上你的NAS公钥，或者用上面按钮打开钱包文件"></textarea>
                         </div>
                     </form>
+                    <div class="add_banner linkItem" class="">
+                        <div class="link-item" id="toggle-email-show-btn">已有邮箱</div>
+                    </div>
+                    <div class="add_banner linkItem" class="">
+                        <div class="link-item" id="toggle-sendEmail-show-btn">已发邮箱</div>
+                    </div>
+                    <div class="add_banner hide" id="view-email-domains-tab">
+                        <div class="add_banner">
+                            <div class="search-header">
+                                <span id="search_icon" class="icon iconfont icon-fanhui1"></span>
+                                <h4 style="margin: 0 auto;
+										width: 100%;
+										padding: 20px 0">在星云链上查看地址拥有的邮箱</h4>
+                            </div>
+
+                            <div class="search-box">
+                                <input type="text" class="form-control" id="query_user_domains_input" placeholder="输入用户地址">
+                                <button id="query_user_domains_btn" type="button" class="btn btn-danger">查询</button>
+                            </div>
+                            <ul id="query_user_email_result_panel">
+                                <li>
+                                    <h2>厕所厕所</h2>
+                                    <p clas="title">1111</p>
+                                    <p class="context">222222222222</p>
+                                    <span class="iconfont icon-icon_receive"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -411,7 +427,7 @@
 
     }, 3000);
   });
-  // TODO： 更新domain的content，子域名，转移domain所有权
+  // TODO： 更新domain的content，子邮箱，转移domain所有权
 
   $("#donate-btn").click(function () {
     var toAddress = dappAuthorAccount.getAddressString();
@@ -429,7 +445,7 @@
   $("#register_domain_btn").click(function () {
     var domainHost = $("#register_domain_input").val().trim();
     if (!domainHost || !isValidHostFormat(domainHost)) {
-      showErrorInfo("域名格式错误");
+      showErrorInfo("邮箱格式错误");
       return;
     }
     var pubkey = $("#register_domain_pubkey_input").val().trim();
@@ -451,7 +467,7 @@
 
     callOnChainTx(simulateFromAddress, dappAddress, value, '0', gas_price, gas_limit, callFunction, callArgs,
       function (data) {
-        showSuccessInfo("域名注册成功");
+        showSuccessInfo("邮箱注册成功");
       });
   });
 
@@ -474,7 +490,7 @@
       toHost = toHost.substring(0, toHost.length - '.nas'.length).trim();
     }
     if (!toHost) {
-      showErrorInfo("请填写收件人域名");
+      showErrorInfo("请填写收件人邮箱");
       return;
     }
     var fromHost = $("#send_mail_from_domain_input").val().trim();
@@ -482,7 +498,7 @@
       fromHost = fromHost.substring(0, fromHost.length - '.nas'.length).trim();
     }
     if (!fromHost) {
-      showErrorInfo("请填写发件人域名");
+      showErrorInfo("请填写发件人邮箱");
       return;
     }
 
@@ -509,7 +525,7 @@
       }
       var result = JSON.parse(resp.result);
       if (!result || result.length < 2 || !result[0] || !result[1]) {
-        throw new Error("此域名没找到");
+        throw new Error("此邮箱没找到");
       }
       var fromDomainItem = result[0];
       var toDomainItem = result[1];
@@ -533,7 +549,7 @@
   $("#query_domain_btn").click(function () {
     var domainHost = $("#query_domain_input").val().trim();
     if (!domainHost || !isValidHostFormat(domainHost)) {
-      showErrorInfo("域名格式错误");
+      showErrorInfo("邮箱格式错误");
       return;
     }
     var value = "0";
@@ -553,7 +569,7 @@
       }
       var result = JSON.parse(resp.result);
       if (!result) {
-        throw new Error("此域名没找到");
+        throw new Error("此邮箱没找到");
       }
       var $resultPanel = $("#query_domain_info_result_panel");
       $resultPanel.find('.-domain-owner-span').text(result.owner);
@@ -568,7 +584,7 @@
   $("#query_domain_mails_btn").click(function () {
     var domainHost = $("#query_domain_mails_input").val().trim();
     if (!domainHost || !isValidHostFormat(domainHost)) {
-      showErrorInfo("域名格式错误");
+      showErrorInfo("邮箱格式错误");
       return;
     }
     var value = "0";
@@ -630,7 +646,7 @@
             });
           })($div, privateKey, encryptedContent);
         } else {
-          var $msg = $("<div><span>原文内容: </span><br/><p>切换到注册域名标签页打开钱包后才能解密查看邮件内容原文</p></div>");
+          var $msg = $("<div><span>原文内容: </span><br/><p>切换到注册邮箱标签页打开钱包后才能解密查看邮件内容原文</p></div>");
           $div.append($msg);
         }
         $li.append($div);
@@ -669,7 +685,7 @@
       var $ul = $("<ul></ul>");
       $resultPanel.html('');
       if (result.length < 1) {
-        showErrorInfo("此地址至今没有拥有星云域名");
+        showErrorInfo("此地址至今没有拥有星云邮箱");
         return;
       }
       for (var i = 0; i < result.length; i++) {
@@ -700,7 +716,26 @@
       $panel.addClass('hide');
     }
   });
-
+  $("#toggle-email-show-btn").click(function () {
+    var $panel = $("#view-email-domains-tab");
+    if ($panel.hasClass('hide')) {
+      $panel.removeClass('hide');
+    } else {
+      $panel.addClass('hide');
+    }
+  });
+  $("#toggle-sendEmail-show-btn").click(function () {
+    var $panel = $("#view-email-domains-tab");
+    if ($panel.hasClass('hide')) {
+      $panel.removeClass('hide');
+    } else {
+      $panel.addClass('hide');
+    }
+  });
+    $('#search_icon').click(function () {
+      var $panel = $("#view-email-domains-tab");
+      $panel.addClass('hide');
+    })
   //return of search,
   function cbSearch(resp) {
     var result = resp.result    ////resp is an object, resp.result is a JSON string

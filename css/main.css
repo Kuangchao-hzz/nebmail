@@ -196,7 +196,7 @@ body .row{
     border-bottom-left-radius: 4px;
     border: 1px solid #e8e8e8;
     color: #fff;
-    line-height: 3em;
+    line-height: 2em;
 }
 .label-input input{
     min-height: 2em;
@@ -229,4 +229,33 @@ body .row{
 #money-tab img{
     width: 50%;
     margin: 0 auto;
+}
+#money-tab .linkItem .link-item{
+    background: transparent;
+    border-bottom: 1px #ddd solid;
+    border-radius: 4px;
+    padding: 0.55rem 0.5875rem;
+    font-size: 12px;
+    outline: none;
+}
+#neb-wallet-panel p{
+    font-size: 14px;
+    padding-top: 1rem;
+    text-indent: 0;
+    font-weight: 600;
+}
+#neb-wallet-panel button{
+    background: #007bff;
+}
+#sendmail-tab input{
+    padding: 0 12px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: none;
+}
+#send_mail_btn{
+    background: #007bff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 25px;
 }

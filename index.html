@@ -263,11 +263,22 @@
                             <ul id="query_user_email_result_panel">
                                 <li>
                                     <h2>厕所厕所</h2>
-                                    <p clas="title">1111</p>
+                                    <p clas="title">2018-06-20</p>
                                     <p class="context">222222222222</p>
                                     <span class="iconfont icon-icon_receive"></span>
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                    <div class="hide" id="email-detail">
+                        <div class="detail-header">
+                            <span id="detail_icon" class="icon iconfont icon-fanhui1"></span>
+                            邮件详情
+                        </div>
+                        <div class="email-context">
+                            <h2>邮件标题</h2>
+                            <p>2018/06/30</p>
+                            <div>11111111111111111111</div>
                         </div>
                     </div>
                 </div>
@@ -725,7 +736,7 @@
     }
   });
   $("#toggle-sendEmail-show-btn").click(function () {
-    var $panel = $("#view-email-domains-tab");
+    var $panel = $("#email-detail");
     if ($panel.hasClass('hide')) {
       $panel.removeClass('hide');
     } else {
@@ -734,6 +745,10 @@
   });
     $('#search_icon').click(function () {
       var $panel = $("#view-email-domains-tab");
+      $panel.addClass('hide');
+    })
+    $('#detail_icon').click(function () {
+      var $panel = $("#email-detail");
       $panel.addClass('hide');
     })
   //return of search,

@@ -359,6 +359,7 @@ body ul li{
 }
 #query_user_email_result_panel li h2{
     font-size: 16px;
+    font-weight: 600;
 }
 #query_user_email_result_panel li p{
     white-space: nowrap;
@@ -373,7 +374,7 @@ body ul li{
     padding: 0;
     text-indent: 0;
     font-size: 14px;
-    line-height: 15px;
+    line-height: 18px;
 }
 #query_user_email_result_panel li .iconfont{
     position: absolute;
@@ -382,4 +383,43 @@ body ul li{
     transform: translateY(-50%);
     font-size: 28px;
     color: #007bff;
+}
+#email-detail .detail-header{
+    height: 40px;
+    text-align: center;
+    background: #007bff;
+    font-size: 14px;
+    position: relative;
+    color: #fff;
+    line-height: 40px;
+}
+#email-detail .detail-header .iconfont{
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#email-detail{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #ddd;
+}
+#email-detail .email-context{
+    text-align: center;
+}
+#email-detail .email-context h2{
+    font-size: 20px;
+    padding-top: 20px;
+}
+#email-detail .email-context p{
+    font-size: 16px;
+    text-indent: 0;
+}
+#email-detail .email-context div{
+    font-size: 14px;
+    text-indent: 30px;
+    text-align: left;
 }

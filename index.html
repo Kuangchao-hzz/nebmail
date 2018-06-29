@@ -15,6 +15,7 @@
     <link rel=stylesheet href="css/ui-block.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="shortcut icon" type="image/png" href="img/logo.png"/>
+    <link rel="stylesheet" href="iconfont/iconfont.css">
 
     <script src="lib/jquery-3.3.1.min.js"></script>
     <script src=lib/nebulas.js></script>
@@ -28,6 +29,7 @@
     <script src=js/home.v1.js></script>
     <script src=js/i18n.js data-depends=jquery.slim></script>
     <script src=js/ui-block.js data-depends="bootbox blockies jquery.slim i18n.js nebulas.js"></script>
+
 </head>
 
 <body>
@@ -38,7 +40,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" id="domains-tab-nav" data-toggle="tab" href="#domains-tab" role="tab"
                        aria-controls="domains"
-                       aria-selected="true">注册域名</a>
+                       aria-selected="true">
+                        <span class="iconfont icon-shenqinggexingyuming"></span>
+                        注册域名</a>
                 </li>
                 <!--<li class="nav-item">-->
                 <!--<a class="nav-link" id="view-domain-tab-nav" data-toggle="tab" href="#view-domain-tab" role="tab" aria-controls="view-domain"-->
@@ -50,34 +54,35 @@
                 <!--</li>-->
                 <li class="nav-item">
                     <a class="nav-link" id="sendmail-tab-nav" data-toggle="tab" href="#sendmail-tab" role="tab"
-                       aria-controls="sendmail" aria-selected="false">发送邮件</a>
+                       aria-controls="sendmail" aria-selected="false"><span class="iconfont icon-youxiang"></span>发送邮件</a>
                 </li>
                 <!--<li class="nav-item">-->
                 <!--<a class="nav-link" id="mailbox-tab-nav" data-toggle="tab" href="#mailbox-tab" role="tab" aria-controls="mailbox" aria-selected="false">查收邮件</a>-->
                 <!--</li>-->
                 <li class="nav-item">
                     <a class="nav-link" id="money-tab-nav" data-toggle="tab" href="#money-tab" role="tab"
-                       aria-controls="mailbox" aria-selected="false">我的</a>
+                       aria-controls="mailbox" aria-selected="false"><span class="iconfont icon-wode"></span>我的</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="domains-tab" role="tabpanel"
                      aria-labelledby="domains-tab-nav">
                     <div class="add_banner" style="padding-top: 150px">
-                        <h4 style="margin: 0 auto;
+                        <h4 style="margin: 0 auto;font-weight: 600;
 					width: 100%;
 					padding: 20px 0">在星云链上注册域名服务</h4>
                         <div>
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="域名(只能包含字母或数字并且以字母开头)"
                                        id="register_domain_input" aria-label="域名(只能包含字母或数字并且以字母开头)"
-                                       aria-describedby="basic-addon2" style="background: white;">
+                                       aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="basic-addon2">.nas</span>
                                 </div>
                             </div>
                             <div class="register-domain">
-                                <button id="register_domain_btn" type="button" class="btn btn-primary">注册</button>
+                                <button id="register_domain_btn" type="button" class="btn btn-primary">
+                                    <span class="iconfont icon-zhuce"></span>注册</button>
                             </div>
                         </div>
                     </div>

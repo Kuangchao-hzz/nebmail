@@ -163,8 +163,22 @@ p {
     display: flex;
     flex-wrap: nowrap;
     font-size: 12px;
-    border-top: 1px #ddd solid;
     justify-content: space-between;
+    background: #ddd;
+}
+#myTab a{
+    display: flex;
+    align-items: center;
+    color: #666;
+}
+.nav-tabs .nav-link.active{
+    border-radius: 0;
+}
+.nav-tabs .nav-link.active .iconfont{
+    color: #007bff;
+}
+.nav-tabs .nav-link.active{
+    color: #007bff;
 }
 .nav-link.active{
     border: 0 !important;
@@ -258,4 +272,23 @@ body .row{
     border: none;
     border-radius: 4px;
     padding: 5px 25px;
+}
+button:focus{
+    box-shadow: none !important;
+}
+#register_domain_input{
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px #ddd solid;
+    background: transparent;
+}
+#basic-addon2{
+    border: 0;
+    background: transparent;
+    border-radius: 0;
+    position: relative;
+    bottom: -2px;
+}
+body{
+    background: #f1f1f1;
 }

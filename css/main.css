@@ -235,8 +235,12 @@ body .row{
 }
 .add_banner h4{
     text-align: center;
-    color: #666;
     font-size: 16px;
+    background: #007bff;
+    color: #fff;
+}
+.add_banner .iconfont{
+    color: #fff;
 }
 .register-domain{
   text-align: center;
@@ -398,6 +402,7 @@ body ul li{
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
+    font-size: 24px;
 }
 #email-detail{
     position: fixed;
@@ -405,7 +410,7 @@ body ul li{
     top: 0;
     right: 0;
     bottom: 0;
-    background: #ddd;
+    background: #fff;
 }
 #email-detail .email-context{
     text-align: center;
@@ -422,4 +427,5 @@ body ul li{
     font-size: 14px;
     text-indent: 30px;
     text-align: left;
+    padding: 20px;
 }

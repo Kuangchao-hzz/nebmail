@@ -9,7 +9,7 @@
     <meta name="x5-fullscreen" content="true">
     <meta name="full-screen" content="yes">
 
-    <title>星云邮件-一个去中心化的加密邮件服务</title>
+    <title>星云邮件大师-移动端</title>
     <link rel="stylesheet" href="lib/bootstrap-4.0.0-dist/css/bootstrap.css">
     <link rel=stylesheet href="css/base.css">
     <link rel=stylesheet href="css/ui-block.css">
@@ -36,6 +36,7 @@
 <div class="row">
     <main class="col-md-12 ml-sm-auto col-lg-10 px-2">
         <div class="">
+            
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="domains-tab-nav" data-toggle="tab" href="#domains-tab" role="tab"
@@ -46,6 +47,7 @@
                            注册邮箱</div>
                     </a>
                 </li>
+
                 <!--<li class="nav-item">-->
                 <!--<a class="nav-link" id="view-domain-tab-nav" data-toggle="tab" href="#view-domain-tab" role="tab" aria-controls="view-domain"-->
                 <!--aria-selected="false">查看域名信息</a>-->
@@ -74,9 +76,11 @@
                 <div class="tab-pane fade show active" id="domains-tab" role="tabpanel"
                      aria-labelledby="domains-tab-nav">
                     <div class="add_banner" style="padding-top: 150px">
-                        <h4 style="margin: 0 auto;font-weight: 600;
-					width: 100%;
-					padding: 20px 0">在星云链上注册邮箱服务</h4>
+                        <!--<h4 style="margin: 0 auto;font-weight: 600;-->
+					<!--width: 100%;-->
+					<!--padding: 20px 0">在星云链上注册邮箱服务</h4>-->
+                        
+                        <h9 style="width: 300px;margin: 5px;padding-right: 5px;" id="my_address"></h9>
                         <div>
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="邮箱(只能包含字母或数字并且以字母开头)"
@@ -88,8 +92,10 @@
                             </div>
                             <div class="register-domain">
                                 <button id="register_domain_btn" type="button" class="btn btn-primary">
-                                    <span class="iconfont icon-zhuce"></span>注册</button>
+                                    <span class="iconfont icon-zhuce"></span>注册链上邮箱</button>
                             </div>
+
+                            <div id="error-notify-panel" class="alert alert-danger" role="alert"></div>
                         </div>
                     </div>
                 </div>
@@ -128,15 +134,15 @@
                     <div class="add_banner">
                         <h4 style="margin: 0 auto;width: 100%;padding: 20px 0">发送邮件</h4>
                         <div>
-                            <span style="font-size: 14px">发件人地址(你自己的星云邮箱，比如 abc.nas)</span>
+                            <span style="font-size: 14px">发件人地址(星云邮箱，例如: abc.nas)</span>
                             <br>
                             <input type="text" id="send_mail_from_domain_input" style="width: 100%;">
                             <br>
-                            <span>收件人地址(星云邮箱，比如 zoowii.nas)</span>
+                            <span>收件人地址(星云邮箱，例如: cjm.nas)</span>
                             <br>
                             <input type="text" id="send_mail_to_domain_input" style="width: 100%;">
                             <br>
-                            <span>邮件内容(邮件内容会使用收件人公钥进行加密，只有收件人可以凭私钥读取)</span>
+                            <span>邮件内容</span>
                             <textarea id="send_mail_content_input" style="width: 100%;" rows="10"></textarea>
                             <br>
                             <div style="text-align: right">
@@ -144,9 +150,9 @@
                             </div>
 
                         </div>
-                        <div class="hide" id="query_user_domains_result_panel" style="color: red; padding: 10px">
+                        <!--<div class="hide" id="query_user_domains_result_panel" style="color: red; padding: 10px">-->
 
-                        </div>
+                        <!--</div>-->
                     </div>
                 </div>
 
@@ -154,7 +160,7 @@
                     <div class="add_banner">
                         <h4 style="margin: 0 auto;
 							width: 100%;
-							padding: 20px 0">在星云链上查看邮箱收到的邮件(在本页头部打开钱包后才可以解密邮件内容)</h4>
+							padding: 20px 0">在星云链上查看邮箱收到的邮件</h4>
                         <div>
                             <div class="input-group mb-3" style="width: 50%;">
                                 <input type="text" class="form-control" placeholder="邮箱(只能包含字母或数字并且以字母开头)"
@@ -169,107 +175,145 @@
                         <div class="hide" id="query_domain_mails_result_panel" style="color: red; padding: 10px"></div>
                     </div>
                 </div>
+
+
+
+
+
+
                 <!-- 我的钱包 -->
                 <div class="tab-pane fade" id="money-tab" role="tabpanel" aria-labelledby="mailbox-tab-nav">
                     <div class="pro-logo" style="text-align: center;padding: 20px 0">
                         <img src="img/logo.png" alt="">
                     </div>
-                    <div class="add_banner linkItem">
-                        <div class="link-item" id="toggle-wallet-show-btn">我的钱包</div>
-                    </div>
-                    <div class="hide" id="neb-wallet-panel">
-                        <div class="container select-wallet-file"></div>
-                        <div id=walletinfo class="container transaction">
-                            <div class=row>
-                                <div class=col>
-                                    <div class=form-group>
-                                        <label for=address data-i18n=wallet-info/your-addr>你的地址</label>
-                                        <input type=text class=form-control id=address disabled>
-                                    </div>
-                                    <div class=form-group>
-                                        <label for=amount data-i18n=wallet-info/acc-balance>账户余额 : </label>
-                                        <input type=text id=amount class=form-control disabled>
-                                    </div>
-                                    <div class=form-group>
-                                        <label for=keystore>
-                                            <span data-i18n=keystore-file>Keystore File</span>
-                                            (JSON / Recommended / Encrypted)
-                                        </label>
-                                        <button type=submit
-                                                class="btn btn-default col-xs-12 col-sm-12 col-md-12 text-center"
-                                                id=keystore data-i18n=download>下载
-                                        </button>
-                                    </div>
-                                    <div class=form-group>
-                                        <label for=password data-i18n=wallet-info/private-key>Private Key
-                                            (unencrypted)</label>
-                                        <input type=password id=password class=form-control disabled>
-                                        <div>
-                                            <input id=togglePassword type=checkbox>
-                                            <label for=togglePassword>visible</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col qr_code">
-                                    <div class=text-center>
-                                        <label for=addressqr data-i18n=wallet-info/your-addr>Your Address</label>
-                                        <div class=form-group id=addressqr></div>
-                                    </div>
-                                    <div class="display-none key_qr text-center">
-                                        <label for=privateqr data-i18n=wallet-info/private-key>Private Key
-                                            (unencrypted)</label>
-                                        <div class=form-group id=privateqr></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="add_banner linkItem">
-                        <div class="link-item" id="toggle-address-show-btn">NAS地址</div>
-                    </div>
-                    <form class="hide" id="neb-wallet-address" style="margin-top: 20px">
-                        <div class="form-group label-input">
-                            <label for="register_domain_address_input" class="col-form-label">你的NAS地址: </label>
-                            <input type="text" id="register_domain_address_input" class="form-control"
-                                   style="width: 100%; background: white;" placeholder="在此处贴上你的NAS地址，或者用上面按钮打开钱包文件"
-                                   value=""/>
-                        </div>
-                        <div class="form-group label-input">
-                            <label for="register_domain_pubkey_input" class="col-form-label">你的NAS公钥: </label>
-                            <textarea rows="3" class="form-control" style="width: 100%; background: white;"
-                                      id="register_domain_pubkey_input"
-                                      placeholder="在此处贴上你的NAS公钥，或者用上面按钮打开钱包文件"></textarea>
-                        </div>
-                    </form>
+                    <!--<div class="add_banner linkItem">-->
+                        <!--<div class="link-item" id="toggle-wallet-show-btn">我的钱包</div>-->
+                    <!--</div>-->
+                    <!--<div class="hide" id="neb-wallet-panel">-->
+                        <!--<div class="container select-wallet-file"></div>-->
+                        <!--<div id=walletinfo class="container transaction">-->
+                            <!--<div class=row>-->
+                                <!--<div class=col>-->
+                                    <!--<div class=form-group>-->
+                                        <!--<label for=address data-i18n=wallet-info/your-addr>你的地址</label>-->
+                                        <!--<input type=text class=form-control id=address disabled>-->
+                                    <!--</div>-->
+                                    <!--<div class=form-group>-->
+                                        <!--<label for=amount data-i18n=wallet-info/acc-balance>账户余额 : </label>-->
+                                        <!--<input type=text id=amount class=form-control disabled>-->
+                                    <!--</div>-->
+                                    <!--<div class=form-group>-->
+                                        <!--<label for=keystore>-->
+                                            <!--<span data-i18n=keystore-file>Keystore File</span>-->
+                                            <!--(JSON / Recommended / Encrypted)-->
+                                        <!--</label>-->
+                                        <!--<button type=submit-->
+                                                <!--class="btn btn-default col-xs-12 col-sm-12 col-md-12 text-center"-->
+                                                <!--id=keystore data-i18n=download>下载-->
+                                        <!--</button>-->
+                                    <!--</div>-->
+                                    <!--<div class=form-group>-->
+                                        <!--<label for=password data-i18n=wallet-info/private-key>Private Key-->
+                                            <!--(unencrypted)</label>-->
+                                        <!--<input type=password id=password class=form-control disabled>-->
+                                        <!--<div>-->
+                                            <!--<input id=togglePassword type=checkbox>-->
+                                            <!--<label for=togglePassword>visible</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="col qr_code">-->
+                                    <!--<div class=text-center>-->
+                                        <!--<label for=addressqr data-i18n=wallet-info/your-addr>Your Address</label>-->
+                                        <!--<div class=form-group id=addressqr></div>-->
+                                    <!--</div>-->
+                                    <!--<div class="display-none key_qr text-center">-->
+                                        <!--<label for=privateqr data-i18n=wallet-info/private-key>Private Key-->
+                                            <!--(unencrypted)</label>-->
+                                        <!--<div class=form-group id=privateqr></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="add_banner linkItem">-->
+                        <!--<div class="link-item" id="toggle-address-show-btn">NAS地址</div>-->
+                    <!--</div>-->
+                    <!--<form class="hide" id="neb-wallet-address" style="margin-top: 20px">-->
+                        <!--<div class="form-group label-input">-->
+                            <!--<label for="register_domain_address_input" class="col-form-label">你的NAS地址: </label>-->
+                            <!--<input type="text" id="register_domain_address_input" class="form-control"-->
+                                   <!--style="width: 100%; background: white;" placeholder="在此处贴上你的NAS地址，或者用上面按钮打开钱包文件"-->
+                                   <!--value=""/>-->
+                        <!--</div>-->
+                        <!--<div class="form-group label-input">-->
+                            <!--<label for="register_domain_pubkey_input" class="col-form-label">你的NAS公钥: </label>-->
+                            <!--<textarea rows="3" class="form-control" style="width: 100%; background: white;"-->
+                                      <!--id="register_domain_pubkey_input"-->
+                                      <!--placeholder="在此处贴上你的NAS公钥，或者用上面按钮打开钱包文件"></textarea>-->
+                        <!--</div>-->
+                    <!--</form>-->
                     <div class="add_banner linkItem" class="">
-                        <div class="link-item" id="toggle-email-show-btn">已有邮箱</div>
+                        <div class="link-item" id="toggle-email-show-btn">我的邮箱</div>
                     </div>
                     <div class="add_banner linkItem" class="">
-                        <div class="link-item" id="toggle-sendEmail-show-btn">已发邮箱</div>
+                        <div class="link-item" id="toggle-sendEmail-show-btn">查收邮件</div>
                     </div>
+                    <div class="add_banner linkItem" class="">
+                          <div class="link-item" id="toggle-sendEmail-show-btn_good">已发邮件</div>
+                      </div>
                     <div class="add_banner hide" id="view-email-domains-tab">
                         <div class="add_banner">
                             <div class="search-header">
                                 <span id="search_icon" class="icon iconfont icon-fanhui1"></span>
                                 <h4 style="margin: 0 auto;
 										width: 100%;
-										padding: 10px 0">在星云链上查看地址拥有的邮箱</h4>
+										padding: 10px 0">查看地址拥有的邮箱</h4>
                             </div>
 
                             <div class="search-box">
                                 <input type="text" class="form-control" id="query_user_domains_input" placeholder="输入用户地址">
                                 <button id="query_user_domains_btn" type="button" class="btn btn-danger">查询</button>
                             </div>
-                            <ul id="query_user_email_result_panel">
-                                <li class="email-detail-list">
-                                    <h2>厕所厕所</h2>
-                                    <p clas="title">2018-06-20</p>
-                                    <p class="context">222222222222</p>
-                                    <span class="iconfont icon-icon_receive"></span>
-                                </li>
-                            </ul>
+
+                             <div class="hide" id="query_user_domains_result_panel" style="padding: 10px">
+
+                            </div>
                         </div>
                     </div>
+
+
+                    <div class="add_banner hide" id="view-email-domains-tab-send">
+                        <div class="add_banner">
+                            <div class="search-header">
+                                <span id="search_icon_send" class="icon iconfont icon-fanhui1"></span>
+                                <h4 style="margin: 0 auto;
+                    										width: 100%;
+                    										padding: 10px 0">收件箱</h4>
+                            </div>
+
+                            <div class="search-box">
+                                <input type="text" class="form-control" id="query_user_domains_input_send"
+                                       placeholder="输入查收邮箱的地址，不加.nas后缀">
+                                <button id="query_user_domains_btn_send" type="button" class="btn btn-danger">查询</button>
+                            </div>
+                            <div class="hide" id="query_user_domains_result_panel_send" style="padding: 10px">
+
+                            </div>
+
+                            <!--<ul id="query_user_email_result_panel">-->
+                                <!--<li class="email-detail-list">-->
+                                    <!--<h2>厕所厕所</h2>-->
+                                    <!--<p clas="title">2018-06-20</p>-->
+                                    <!--<p class="context">222222222222</p>-->
+                                    <!--<span class="iconfont icon-icon_receive"></span>-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                            
+                        </div>
+                    </div>
+
+
                     <div class="hide" id="email-detail">
                         <div class="detail-header">
                             <span id="detail_icon" class="icon iconfont icon-fanhui1"></span>
@@ -289,8 +333,26 @@
     </main>
 </div>
 <script>
-  // wallet file operations script
-  var nebulas = require("nebulas"),
+
+    var address = "";
+    window.postMessage({
+    "target": "contentscript",
+    "data": {},  // wallet file operations script
+    "method": "getAccount",
+
+    }, "*");
+
+    window.addEventListener('message', function (e) {
+    if (e.data && e.data.data) {
+        if (e.data.data.account) {
+
+                address = e.data.data.account
+             $("#my_address").html(address);
+            }
+        }
+    })
+
+    var nebulas = require("nebulas"),
     Account = nebulas.Account,
     Neb = nebulas.Neb,
     Transaction = nebulas.Transaction,
@@ -357,7 +419,9 @@
   "use strict";
 
   var dappTestNetAddress = "n1zYsYymcnZ3RSYW7529ZfsJLj52cbL1QRL";
-  var dappMainNetAddress = "n1z6zsFpEBi8M7HJvgNrNUQGLKrwxszMuLJ";
+  // var dappMainNetAddress = "n1z6zsFpEBi8M7HJvgNrNUQGLKrwxszMuLJ";
+  var dappMainNetAddress = "n1nBoQZPofBDoApmPQa6HbRyxrNEVWoguXg";
+  // var txhash = "f6fd19f27ea2146e2f6c7390e14809a7020ea6e4b3ff621ab73ef2176cb87cf7";
 
   var useTestNet = location.search.indexOf('testnet=true') >= 0 ? true : false;
 
@@ -459,16 +523,18 @@
       showErrorInfo("邮箱格式错误");
       return;
     }
-    var pubkey = $("#register_domain_pubkey_input").val().trim();
-    if (pubkey.length < 1) {
-      showErrorInfo("请贴入你的公钥，或者从本网页中打开钱包");
-      return;
-    }
-    var address = $("#register_domain_address_input").val().trim();
-    if (address.length < 1) {
-      showErrorInfo("请贴入你的地址，或者从本网页中打开钱包");
-      return;
-    }
+    // var pubkey = $("#register_domain_pubkey_input").val().trim();
+    // if (pubkey.length < 1) {
+    //   showErrorInfo("请贴入你的公钥，或者从本网页中打开钱包");
+    //   return;
+    // }
+    // var address = $("#register_domain_address_input").val().trim();
+    // if (address.length < 1) {
+    //   showErrorInfo("请贴入你的地址，或者从本网页中打开钱包");
+    //   return;
+    // }
+
+    var pubkey = "123456";
 
     var value = "0";
     var gas_price = "1000000"
@@ -530,6 +596,7 @@
     }
 
     neb.api.call(simulateFromAddress, dappAddress, value, '0', gas_price, gas_limit, contract).then(function (resp) {
+
       console.log(resp);
       if (resp.execute_err.length > 0) {
         throw new Error(resp.execute_err);
@@ -541,16 +608,20 @@
       var fromDomainItem = result[0];
       var toDomainItem = result[1];
       // 用对方公钥对邮件内容进行加密
-      var toDomainPubKey = JSON.parse(toDomainItem.content)['pubKey'];
-      var toEncryptPubKey = convertHexToBinary('04' + toDomainPubKey); // 加了04前缀的公钥
-      console.log(toEncryptPubKey);
-      eccrypto.encrypt(toEncryptPubKey, Buffer(content)).then(function (encryptedContent) {
-        if (!encryptedContent) {
-          showErrorInfo("加密失败");
-          return;
-        }
-        sendMail(fromDomainItem, toDomainItem, encryptedContent);
-      });
+      // var toDomainPubKey = JSON.parse(toDomainItem.content)['pubKey'];
+      // var toEncryptPubKey = convertHexToBinary('04' + toDomainPubKey); // 加了04前缀的公钥
+      // console.log(toEncryptPubKey);
+      // eccrypto.encrypt(toEncryptPubKey, Buffer(content)).then(function (encryptedContent) {
+      //   if (!encryptedContent) {
+      //     showErrorInfo("加密失败");
+      //     return;
+      //   }
+      //
+      // });
+
+
+       sendMail(fromDomainItem, toDomainItem, content);
+
     }).catch(function (err) {
       console.log("error:" + err.message);
       showErrorInfo(err.message);
@@ -592,8 +663,9 @@
     });
   });
 
-  $("#query_domain_mails_btn").click(function () {
-    var domainHost = $("#query_domain_mails_input").val().trim();
+  $("#query_user_domains_btn_send").click(function () {
+                         
+    var domainHost = $("#query_user_domains_input_send").val().trim();
     if (!domainHost || !isValidHostFormat(domainHost)) {
       showErrorInfo("邮箱格式错误");
       return;
@@ -602,6 +674,8 @@
     var gas_price = "1000000"
     var gas_limit = "2000000"
     var callFunction = "getHostReceivedMails";
+
+
     var callArgs = JSON.stringify([domainHost]);
     var contract = {
       "function": callFunction,
@@ -614,52 +688,33 @@
         throw new Error(resp.execute_err);
       }
       var mails = JSON.parse(resp.result);
-      var $resultPanel = $("#query_domain_mails_result_panel");
+      var $resultPanel = $("#query_user_domains_result_panel_send");
       $resultPanel.html('');
+
+       var $ul = $("<ul id = 'query_user_email_result_panel'></ul>");
+
       if (mails.length < 1) {
-        showErrorInfo("此地址至今没有收到邮件");
+
+       $ul.append("暂无收到邮件");
+
+        $resultPanel.append($ul);              
+        $resultPanel.show();                   
+
         return;
       }
-      var $ul = $("<ul></ul>");
+
       for (var i = 0; i < mails.length; i++) {
         var mail = mails[i];
-        var $li = $("<li></li>");
+        var $li = $("<li class='email-detail-list'></li>");
         var $div = $("<div></div>");
-        $div.append($("<span>来自: " + mail.fromAddress + "@" + mail.from + ".nas 的邮件</span>"));
+        $div.append($("<span>内容: "+ mail.content +" </span>"));
+        $div.append($("<br/>"));
+        $div.append($("<span>来自: @" + mail.from + ".nas 的邮件</span>"));
         $div.append($("<br/>"));
         $div.append($("<span>时间: " + new Date(mail.time * 1000).toLocaleString() + "</span>"));
         $div.append($("<br/>"));
-        $div.append($("<span>密文内容: </span>"));
-        var $contentDiv = $("<div></div>");
-        var encryptedContent = mail.content;
-        var encryptedContentStr = encryptedContent;
-        if (encryptedContent.ciphertext) {
-          encryptedContentStr = JSON.stringify(encryptedContent.ciphertext.data);
-        }
-        $contentDiv.text(encryptedContentStr);
-        $div.append($contentDiv);
-        if (currentAccount) {
-          var privateKey = currentAccount.getPrivateKey();
-          if (encryptedContent.ciphertext) {
-            encryptedContent.ciphertext = Buffer(encryptedContent.ciphertext.data);
-            encryptedContent.ephemPublicKey = Buffer(encryptedContent.ephemPublicKey.data);
-            encryptedContent.iv = Buffer(encryptedContent.iv.data);
-            encryptedContent.mac = Buffer(encryptedContent.mac.data);
-          }
-          (function ($div, privateKey, encryptedContent) {
-            eccrypto.decrypt(privateKey, encryptedContent).then(function (plaintext) {
-              var $decryptedContentDiv = $("<div></div>");
-              var decryptedContent = plaintext.toString();
-              $decryptedContentDiv.text("原文是: " + decryptedContent);
-              $div.append($decryptedContentDiv);
-            }).catch(function (e) {
-              console.log(e);
-            });
-          })($div, privateKey, encryptedContent);
-        } else {
-          var $msg = $("<div><span>原文内容: </span><br/><p>切换到注册邮箱标签页打开钱包后才能解密查看邮件内容原文</p></div>");
-          $div.append($msg);
-        }
+        $div.append($("<span class='iconfont icon-icon_receive'></span>"));
+
         $li.append($div);
         $ul.append($li);
       }
@@ -700,8 +755,8 @@
         return;
       }
       for (var i = 0; i < result.length; i++) {
-        var $li = $("<li></li>");
-        $li.text(result[i].host + '.nas');
+        var $li = $("<li class='email-detail-list'></li>");
+        $li.text("邮箱地址：" +result[i].host + '.nas');
         $ul.append($li);
       }
       $resultPanel.append($ul);
@@ -728,6 +783,11 @@
     }
   });
   $("#toggle-email-show-btn").click(function () {
+
+    $("#query_user_domains_input").val(address);
+
+  $("#query_user_domains_btn").click();
+
     var $panel = $("#view-email-domains-tab");
     if ($panel.hasClass('hide')) {
       $panel.removeClass('hide');
@@ -735,6 +795,21 @@
       $panel.addClass('hide');
     }
   });
+
+
+
+  $("#toggle-sendEmail-show-btn").click(function () {
+
+      var $panel = $("#view-email-domains-tab-send");
+      if ($panel.hasClass('hide')) {
+        $panel.removeClass('hide');
+      } else {
+        $panel.addClass('hide');
+      }
+    });
+  
+
+
   $(".email-detail-list").click(function () {
     var $panel = $("#email-detail");
     if ($panel.hasClass('hide')) {
@@ -747,6 +822,11 @@
       var $panel = $("#view-email-domains-tab");
       $panel.addClass('hide');
     })
+
+  $('#search_icon_send').click(function () {
+        var $panel = $("#view-email-domains-tab-send");
+        $panel.addClass('hide');
+      })
     $('#detail_icon').click(function () {
       var $panel = $("#email-detail");
       $panel.addClass('hide');

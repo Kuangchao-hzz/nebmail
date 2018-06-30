@@ -348,6 +348,51 @@ body ul li{
     border-bottom-right-radius: 4px;
     border: none;
 }
+
+#view-email-domains-tab-send{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: #ddd;
+}
+#view-email-domains-tab-send .search-header{
+    position: relative;
+}
+#view-email-domains-tab-send .search-header .icon{
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+}
+#view-email-domains-tab-send .search-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px #fff solid;
+}
+#view-email-domains-tab-send .search-box input{
+    width: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+}
+#view-email-domains-tab-send .search-box #query_user_domains_btn_send{
+    white-space: nowrap;
+    margin: 0;
+    padding: 10px 25px;
+    font-size: 14px;
+    background: #007bff;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border: none;
+}
+
+
+
 #query_user_email_result_panel{
     padding: 15px;
 }

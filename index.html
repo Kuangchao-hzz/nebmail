@@ -16,8 +16,10 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="shortcut icon" type="image/png" href="img/logo.png"/>
     <link rel="stylesheet" href="iconfont/iconfont.css">
+    <link rel="stylesheet" href="css/limonte-sweetalert2_7.21.1_sweetalert2.min.css">
 
     <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="js/limonte-sweetalert2_7.21.1_sweetalert2.min.js"></script>
     <script src=lib/nebulas.js></script>
     <script src=lib/nebPay.js></script>
     <script src=lib/bootstrap-4.0.0-dist/js/bootstrap.min.js></script>
@@ -29,6 +31,7 @@
     <script src=js/home.v1.js></script>
     <script src=js/i18n.js data-depends=jquery.slim></script>
     <script src=js/ui-block.js data-depends="bootbox blockies jquery.slim i18n.js nebulas.js"></script>
+
 
 </head>
 
@@ -95,7 +98,7 @@
                                     <span class="iconfont icon-zhuce"></span>注册链上邮箱</button>
                             </div>
 
-                            <div id="error-notify-panel" class="alert alert-danger" role="alert"></div>
+                            <!--<div id="error-notify-panel" class="alert alert-danger" role="alert"></div>-->
                         </div>
                     </div>
                 </div>
@@ -476,6 +479,7 @@
   }
 
   function showErrorInfo(error) {
+    swal(error)
     console.log('info: ', error);
     if (error.msg) {
       error = error.msg;
@@ -596,7 +600,7 @@
     }
 
     neb.api.call(simulateFromAddress, dappAddress, value, '0', gas_price, gas_limit, contract).then(function (resp) {
-
+      swal(resp)
       console.log(resp);
       if (resp.execute_err.length > 0) {
         throw new Error(resp.execute_err);
@@ -623,6 +627,7 @@
        sendMail(fromDomainItem, toDomainItem, content);
 
     }).catch(function (err) {
+      swal(err.message)
       console.log("error:" + err.message);
       showErrorInfo(err.message);
     });
@@ -646,6 +651,7 @@
 
     neb.api.call(simulateFromAddress, dappAddress, value, '0', gas_price, gas_limit, contract).then(function (resp) {
       console.log(resp);
+      swal(resp)
       if (resp.execute_err.length > 0) {
         throw new Error(resp.execute_err);
       }
@@ -684,6 +690,7 @@
 
     neb.api.call(simulateFromAddress, dappAddress, value, '0', gas_price, gas_limit, contract).then(function (resp) {
       console.log(resp);
+      swal(resp)
       if (resp.execute_err.length > 0) {
         throw new Error(resp.execute_err);
       }
@@ -743,6 +750,7 @@
 
     neb.api.call(simulateFromAddress, dappAddress, value, '0', gas_price, gas_limit, contract).then(function (resp) {
       console.log(resp);
+      swal(resp)
       if (resp.execute_err.length > 0) {
         throw new Error(resp.execute_err);
       }
@@ -807,7 +815,9 @@
         $panel.addClass('hide');
       }
     });
-  
+  $('#toggle-sendEmail-show-btn_good').click(function () {
+    swal('开发中...')
+  })
 
 
   $(".email-detail-list").click(function () {
@@ -835,7 +845,7 @@
   function cbSearch(resp) {
     var result = resp.result    ////resp is an object, resp.result is a JSON string
     console.log("return of rpc call: " + JSON.stringify(result))
-
+    swal(result)
     if (result === 'null') {
       $(".add_banner").addClass("hide");
       $(".result_success").addClass("hide");
@@ -903,6 +913,7 @@
         var respObject = JSON.parse(resp);
         // TODO: 错误处理;
         console.log("tx result: " + resp);   //resp is a JSON string
+        swal(resp)
         if (respObject.code === 0) {
           clearInterval(intervalQuery);
           showErrorInfo("钱包操作完成");
@@ -911,6 +922,7 @@
       .catch(function (err) {
         // TODO: 超时处理
         console.log(err);
+        swal(err)
       });
   }
 
